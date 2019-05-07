@@ -1,0 +1,47 @@
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/ecommerce/dist
+/ecommerce/tmp
+/ecommerce/out-tsc
+# Only exists if Bazel was run
+/ecommerce/bazel-out
+
+# dependencies
+/ecommerce/node_modules
+
+# profiling files
+/ecommerce/chrome-profiler-events.json
+/ecommerce/speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+/ecommerce/.project
+/ecommerce/.classpath
+/ecommerce/.c9/
+/ecommerce/*.launch
+/ecommerce/.settings/
+/ecommerce/*.sublime-workspace
+
+# IDE - VSCode
+/ecommerce/.vscode/*
+/ecommerce/!.vscode/settings.json
+/ecommerce/!.vscode/tasks.json
+/ecommerce/!.vscode/launch.json
+/ecommerce/!.vscode/extensions.json
+/ecommerce/.history/*
+
+# misc
+/ecommerce//.sass-cache
+/ecommerce//connect.lock
+/ecommerce//coverage
+/ecommerce//libpeerconnection.log
+/ecommerce/npm-debug.log
+/ecommerce/yarn-error.log
+/ecommerce/testem.log
+/ecommerce//typings
+
+# System Files
+/ecommerce/.DS_Store
+/ecommerce/Thumbs.db
