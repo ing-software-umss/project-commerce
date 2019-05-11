@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   constructor() { }
-  public isLogged: boolean = !false;// switch para ususario logeado y no legeados
+  public isLogged: boolean = false;// switch para ususario logeado y no legeados
   ngOnInit() {
   }
 
