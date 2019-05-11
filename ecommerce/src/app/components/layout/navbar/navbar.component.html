@@ -10,20 +10,21 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-
-			<li class="nav-item ">
-				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Producto<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Blog</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Contacto</a>
-			</li>
 			
+			
+				<li class="nav-item ">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Producto<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item" *ngIf="!isLoggedAdm">
+					<a class="nav-link" href="#">Blog</a>
+				</li>
+				<li class="nav-item" *ngIf="!isLoggedAdm">
+					<a class="nav-link" href="#">Contacto</a>
+				</li>
+		
 
 		</ul>
 		<ul class="navbar-nav mr-6">
@@ -37,28 +38,29 @@
 					<a class="dropdown-item" href="#">Registrarse</a>
 					<!-- <div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Something else here</a>-->
-				</div> 	 
+				</div>
+			</div>
+			<div class="nav-item dropdown " *ngIf="isLogged">
+				<a class="nav-link  " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+
+					<img src="../../../assets/images/avatar.png" width="30" height="30">
+					<!--Logeado!!-->
+				</a>
+
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Configuración</a>
+					<a class="dropdown-item" href="#">Cerrar sesión</a>
+					<a class="dropdown-item" href="#">Otros</a>
+					<a class="dropdown-item " *ngIf="!isLoggedAdm" href="#">Acerca</a>
+					<!-- <div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Something else here</a>-->
+				</div>
 			</div>
 		</ul>
-		
-		<div class="nav-item dropdown " *ngIf="isLogged" >
-			<a class="nav-link  " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
-			aria-haspopup="true" aria-expanded="false">
-			
-				<img src="../../../assets/images/avatar.png" width="30" height="30" >
-				<!--Logeado!!-->
-			</a>
-			
-			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="#">Configuración</a>
-				<a class="dropdown-item" href="#">Cerrar sesión</a>
-				<a class="dropdown-item" href="#">Otros</a>
-				<a class="dropdown-item" href="#">Acerca</a>
-				<!-- <div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#">Something else here</a>-->
-			</div>
-		</div>
-		
+
+
+
 
 
 	</div>
