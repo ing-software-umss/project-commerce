@@ -1,3 +1,132 @@
-<p>
-  forms works!
-</p>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <div class="header">
+    <div class="container">
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Categorias</h2>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-info btn-lg float-right" data-toggle="modal"
+            data-target="#addBtn">Agregar Categorias</button>
+        </div>
+      </div>
+      <hr>
+      <div class="info-table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in users">
+              <td>1</td>
+              <td>jiaju</td>
+              <td>deoikifk</td>
+              <td>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editBtn">Editar</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn">Eliminar</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="NombreCategoria" class="col-sm-2 col-form-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Categoria">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion Categoria">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-info" data-dismiss="modal">Guardar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="NombreCategoria" class="col-sm-2 col-form-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Categoria">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion Categoria">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-info" data-dismiss="modal">Actualizar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="dltBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger">Seguro que desea eliminar la Categoria ??</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Si</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
