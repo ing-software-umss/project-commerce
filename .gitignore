@@ -10,6 +10,7 @@
 
 # dependencies
 /ecommerce/node_modules
+/ecommerce/package-lock.json
 
 # profiling files
 /ecommerce/chrome-profiler-events.json
