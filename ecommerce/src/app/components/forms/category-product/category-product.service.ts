@@ -13,5 +13,9 @@ export class CategoryProductService {
   getCatProducts(): Observable<CategoryProduct[]> {
     return this.db.collection<CategoryProduct>('cat-productos').valueChanges();
   }
+
+  addCatProduct( catProduct: any ): any {
+    return this.db.collection<CategoryProduct>('cat-productos').add(catProduct);
+  }
 }
 

@@ -24,7 +24,22 @@ export class CategoryProductComponent implements OnInit {
 
   addCategoryProduct($event) {
     $event.preventDefault();
-    let form = $event.target.parentNode;
+    let form: any = $event.target.parentNode;
+    let name = form.querySelector('#inputNombre').value ;
+    let descripcion = form.querySelector('#inputDescripcion').value;
+
+    let expreName = /^\w+(\s\w+)*$/;
+    let expreDescripcion = /^\w+(\s\w+)*$/;
+
+    if ( expreName.test(name) && expreDescripcion.test(descripcion) ) {
+      this.categoryProductService.addCatProduct({
+        nombre: name,
+        descripcion,
+      });
+    } else {
+      alert('Error de validacion, campos incorrectos');
+    }
+    form.reset();
   }
 
 }
