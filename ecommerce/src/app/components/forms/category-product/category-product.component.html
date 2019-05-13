@@ -23,11 +23,12 @@
               <th>Eliminar</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngFor="let categoryProduct of categoryProducts">
+
             <tr ng-repeat="user in users">
-              <td>1</td>
-              <td>jiaju</td>
-              <td>deoikifk</td>
+              <td>{{categoryProduct.id}}</td>
+              <td>{{categoryProduct.nombre}}</td>
+              <td>{{categoryProduct.descripcion}}</td>
               <td>
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editBtn">Editar</button>
               </td>
@@ -35,7 +36,6 @@
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn">Eliminar</button>
               </td>
             </tr>
-
           </tbody>
         </table>
       </div>
@@ -66,7 +66,7 @@
                 <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion Categoria">
               </div>
             </div>
-            <button type="submit" class="btn btn-info" data-dismiss="modal">Guardar</button>
+            <button (click)="addCategoryProduct($event)" class="btn btn-info" data-dismiss="modal">Guardar</button>
           </form>
         </div>
         <div class="modal-footer">
