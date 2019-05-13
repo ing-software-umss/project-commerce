@@ -19,6 +19,7 @@
               <th>ID</th>
               <th>Nombre</th>
               <th>Descripcion</th>
+              <th>Imagen</th>
               <th>Editar</th>
               <th>Eliminar</th>
             </tr>
@@ -26,8 +27,9 @@
           <tbody>
             <tr ng-repeat="user in users">
               <td>1</td>
-              <td>jiaju</td>
-              <td>deoikifk</td>
+              <td>Celulares</td>
+              <td>Celulares en general</td>
+              <td>Categorias\Celulares.jpg</td>
               <td>
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editBtn">Editar</button>
               </td>
@@ -66,10 +68,16 @@
                 <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion Categoria">
               </div>
             </div>
-            <button type="submit" class="btn btn-info" data-dismiss="modal">Guardar</button>
+            <div class="form-group row">
+                <label for="ImagenCategoria" class="col-sm-2 col-form-label">Imagen</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputImagen" placeholder="Imagen Producto">
+                </div>
+              </div>  
           </form>
         </div>
         <div class="modal-footer">
+            <button type="submit" class="btn btn-info" data-dismiss="modal">Guardar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
@@ -100,10 +108,16 @@
                 <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion Categoria">
               </div>
             </div>
-            <button type="submit" class="btn btn-info" data-dismiss="modal">Actualizar</button>
+            <div class="form-group row">
+                <label for="ImagenCategoria" class="col-sm-2 col-form-label">Imagen</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputImagen" placeholder="Imagen Producto">
+                </div>
+              </div>
           </form>
         </div>
         <div class="modal-footer">
+            <button type="submit" class="btn btn-info" data-dismiss="modal">Actualizar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
