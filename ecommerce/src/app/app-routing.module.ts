@@ -4,7 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'categoryProduct', loadChildren: './components/forms/forms.module#FormsModule' }
+  { path: 'product', loadChildren: './components/forms/forms.module#FormsModule' }
 ];
 
 @NgModule({
