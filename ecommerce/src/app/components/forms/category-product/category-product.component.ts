@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryProduct } from '../../../shared/models/category-product';
 import {CategoryProductService} from './category-product.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-category-product',
@@ -38,8 +39,11 @@ export class CategoryProductComponent implements OnInit {
       });
     } else {
       alert('Error de validacion, campos incorrectos');
+      //jQuery.noConflict(); 
+    // $("#addBtn").modal("show"); 
     }
-    form.reset();
+  
+   //form.reset();
   }
 
 }

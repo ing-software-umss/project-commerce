@@ -17,5 +17,6 @@ export class CategoryProductService {
   addCatProduct( catProduct: any ): any {
     return this.db.collection<CategoryProduct>('cat-productos').add(catProduct);
   }
+  
 }
 
