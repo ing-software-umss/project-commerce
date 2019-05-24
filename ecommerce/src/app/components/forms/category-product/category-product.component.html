@@ -26,8 +26,8 @@
           <tbody *ngFor="let categoryProduct of categoryProducts; index as i">
 
             <tr ng-repeat="user in users">
-                <th scope="row">{{i+1}}</th>
-              
+              <th scope="row">{{i+1}}</th>
+
               <td>{{categoryProduct.nombre}}</td>
               <td>{{categoryProduct.descripcion}}</td>
               <td>
@@ -44,7 +44,8 @@
   </div>
 
   <div class="modal fade" id="addBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true" >
+    aria-hidden="true">
+
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -58,20 +59,40 @@
             <div class="form-group row">
               <label for="NombreCategoria" class="col-sm-2 col-form-label">Nombre:</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre de la Categoria" pattern="plátano|cereza">
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre de la Categoria"
+                  pattern="plátano|cereza">
               </div>
             </div>
             <div class="form-group row">
               <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion:</label>
               <div class="col-sm-12">
-                <textarea type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion de la Categoria" rows="3"></textarea>
+                <textarea type="text" class="form-control" id="inputDescripcion"
+                  placeholder="Descripcion de la Categoria" rows="3"></textarea>
               </div>
             </div>
-            <button (click)="addCategoryProduct($event)" class="btn btn-info" data-dismiss="modal">Guardar</button>
+            <button (click)="addCategoryProduct($event)" class="btn btn-info">Guardar</button>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                  </div>
+                </div>
+            <div class="form-group row" *ngIf="isAlertE">
+              <div class="col-sm-12">
+                  <div class="alert alert-warning" role="alert" >
+                      Error de validacion, campos incorrectos!
+                    </div>
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="isAlertC">
+                <div class="col-sm-12">
+                    <div class="alert alert-success" role="alert">
+                        Se añadio la categoria Exitosamente
+                      </div>
+                  </div>
+                </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="restart($event)" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -98,15 +119,16 @@
             <div class="form-group row">
               <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
               <div class="col-sm-12">
-                  <textarea type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion de la Categoria" rows="3"></textarea>
-               
+                <textarea type="text" class="form-control" id="inputDescripcion"
+                  placeholder="Descripcion de la Categoria" rows="3"></textarea>
+
               </div>
             </div>
             <button type="submit" class="btn btn-info" data-dismiss="modal">Actualizar</button>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="restart($event)" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
