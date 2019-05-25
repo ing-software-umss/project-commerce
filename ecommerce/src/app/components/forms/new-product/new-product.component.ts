@@ -5,6 +5,8 @@ import { ProductService } from './new-product.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
+import { CategoryProductService } from '../category-product/category-product.service';
+import { CategoryProduct } from 'src/app/shared/models/category-product';
 
 @Component({
   selector: 'app-new-product',
@@ -15,12 +17,23 @@ export class NewProductComponent implements OnInit {
 
   products$: Observable<Product[]>;
   products: Product[];
+
+  categoryProducts$: Observable<CategoryProduct[]>;
+  categoryProducts: CategoryProduct[];
+
   urlImage: Observable<string>;
   uploadPercent: Observable<number>;
 
-  constructor( private productService: ProductService, private storage: AngularFireStorage ) { }
+  constructor( private productService: ProductService, private categoryProductService: CategoryProductService, private storage: AngularFireStorage ) { }
 
   ngOnInit() {
+
+    this.categoryProducts$ = this.categoryProductService.getCatProducts();
+    this.categoryProducts$.subscribe(categoryProducts => {
+      this.categoryProducts = categoryProducts;
+      // console.log(this.categoryProducts);
+    });
+
     this.products$ = this.productService.getCatProducts();
     this.products$.subscribe(products => {
       this.products = products;
@@ -40,16 +53,8 @@ export class NewProductComponent implements OnInit {
   addProduct($event) {
     $event.preventDefault();
     let form: any = document.forms[0];
-    console.log(form)
 
-    /**
-     * inputNombre
-     * inputMarca
-     * inputPrecio
-     * inputCatProduct
-     * inputImagen
-     * inputDescripcion
-     */
+
 
     let nombre = form.querySelector('#inputNombre').value ;
     let marca = form.querySelector('#inputMarca').value;
@@ -58,23 +63,18 @@ export class NewProductComponent implements OnInit {
     let descripcion = form.querySelector('#inputDescripcion').value;
 
 
-    let expreWord = /^\w+(\s\w+)*$/;
+    let expreWord = /^\w+(\s*\-*\w*\d*)*$/;
     let expreNumber = /^[0-9]+$/;
 
-    console.log(expreWord.test(nombre));
-    console.log(expreWord.test(marca));
-    console.log(expreNumber.test(precio));
-    console.log(expreWord.test(descripcion));
     let image = form.querySelector('#imageProduct').value;
 
-    // validar la imagen
     if ( expreWord.test(nombre) && expreWord.test(marca) && expreWord.test(descripcion) && expreNumber.test(precio) ) {
       
       this.productService.addCatProduct({
         nombre,
         marca,
         precio,
-        idCatProducto: '/cat-product/0',
+        idCatProducto: catProduct,
         imagen: image,
         descripcion,
       });

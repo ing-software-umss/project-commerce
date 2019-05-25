@@ -13,30 +13,16 @@ export class ProductService {
 
   getCatProducts(): Observable<Product[]> {
 
-  
-    let aux = this.db.collection<CategoryProduct>('cat-productos').ref;
-
-    let aux2 = aux.where('nombre', '==', 'Celulares');
-    console.log("buscado", aux2);
+    // let aux = this.db.collection<CategoryProduct>('cat-productos').ref;
+    // let aux2 = aux.where('nombre', '==', 'Celulares');
+    // console.log("buscado", aux2);
 
     return this.db.collection<Product>('producto').valueChanges();
   }
 
   addCatProduct(product: any ): any {
-
-    // guardar la imagen el firestore
     
     return this.db.collection<Product>('producto').add(product);
   }
-
-  // //Tarea para subir archivo
-  // public tareaCloudStorage(nombreArchivo: string, datos: any) {
-  //   return this.storage.upload(nombreArchivo, datos);
-  // }
-
-  // //Referencia del archivo
-  // public referenciaCloudStorage(nombreArchivo: string) {
-  //   return this.storage.ref(nombreArchivo);
-  // }
   
 }
