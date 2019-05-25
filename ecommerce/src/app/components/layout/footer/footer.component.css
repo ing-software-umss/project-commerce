@@ -52,6 +52,11 @@ footer{
     display: flex;
 }
 
+.row a{
+    color:white;
+    text-decoration: none;
+}
+
 .row img{
     width: 36px;
     height: 36px;
