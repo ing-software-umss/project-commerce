@@ -10,7 +10,6 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './../environments/environment';
 import { CategoryProductService } from './components/forms/category-product/category-product.service';
-import { MensajeService } from './mensaje.service';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { MensajeService } from './mensaje.service';
     AngularFirestoreModule
   ],
   providers: [
-    CategoryProductService,
-    MensajeService
+    CategoryProductService
   ],
   bootstrap: [AppComponent]
 })

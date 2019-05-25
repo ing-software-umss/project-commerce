@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MensajeService } from 'src/app/mensaje.service';
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
@@ -7,12 +6,9 @@ import { MensajeService } from 'src/app/mensaje.service';
 })
 export class CategoriasComponent implements OnInit {
 
-  constructor(private servicioMensaje: MensajeService) {
+  constructor() {
   }
   ngOnInit() {
-  }
-  mensajeRecivido(): string {
-    return this.servicioMensaje.getMensaje();
   }
 
 }
