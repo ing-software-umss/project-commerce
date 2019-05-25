@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryProduct } from '../../../shared/models/category-product';
 import {CategoryProductService} from './category-product.service';
+import { ModalDirective } from 'ngx-bootstrap/modal'; 
+import { modalConfigDefaults } from 'ngx-bootstrap/modal/modal-options.class';
+//declare var $:any;
 
 @Component({
   selector: 'app-category-product',
@@ -9,10 +12,15 @@ import {CategoryProductService} from './category-product.service';
   styleUrls: ['./category-product.component.css']
 })
 export class CategoryProductComponent implements OnInit {
-
+  
+  public isAlertE: boolean = false;
+  public isAlertC: boolean = false;
   categoryProducts$: Observable<CategoryProduct[]>;
   categoryProducts: CategoryProduct[];
-  constructor( private categoryProductService: CategoryProductService) {}
+  
+  constructor( private categoryProductService: CategoryProductService) {
+    
+  }
 
   ngOnInit() {
     this.categoryProducts$ = this.categoryProductService.getCatProducts();
@@ -24,22 +32,33 @@ export class CategoryProductComponent implements OnInit {
 
   addCategoryProduct($event) {
     $event.preventDefault();
+    
     let form: any = $event.target.parentNode;
     let name = form.querySelector('#inputNombre').value ;
     let descripcion = form.querySelector('#inputDescripcion').value;
 
     let expreName = /^\w+(\s\w+)*$/;
     let expreDescripcion = /^\w+(\s\w+)*$/;
-
+    
     if ( expreName.test(name) && expreDescripcion.test(descripcion) ) {
       this.categoryProductService.addCatProduct({
         nombre: name,
         descripcion,
+        
       });
+      this.isAlertE = false;
+      this.isAlertC = true;
+     form.reset();
     } else {
-      alert('Error de validacion, campos incorrectos');
+      this.isAlertE = true; 
+      this.isAlertC = false;
+     
     }
-    form.reset();
+    
+  }
+  restart($event) {
+    this.isAlertE = false; 
+    this.isAlertC = false;
   }
 
 }

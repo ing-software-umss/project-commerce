@@ -5,6 +5,7 @@ import { FormsRoutingModule } from './forms-routing.module';
 import { CategoryProductComponent } from './category-product/category-product.component';
 import { NewProductComponent } from './new-product/new-product.component';
 
+
 @NgModule({
   declarations: [CategoryProductComponent, NewProductComponent],
   imports: [
