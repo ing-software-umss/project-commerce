@@ -24,7 +24,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<div *ngFor="let categoria of categorias">
-							<a class="dropdown-item" href="product/category">{{categoria.nombre}}</a>
+							<a class="dropdown-item" routerLink="productos/categoria" (click)="mensajeEnviado(categoria.nombre)">{{categoria.nombre}}</a>
 						</div>
 					</div>
 				</li>

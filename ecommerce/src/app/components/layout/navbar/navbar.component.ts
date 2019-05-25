@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryProductService } from '../../forms/category-product/category-product.service';
 import { CategoryProduct } from 'src/app/shared/models/category-product';
 import { Observable } from 'rxjs';
+import { MensajeService } from 'src/app/mensaje.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
   // listaCategorias: 
   categoriasObservable: Observable<CategoryProduct[]>;
   categorias: CategoryProduct[];
-  constructor(private categoryProductService: CategoryProductService) {
+  constructor(private categoryProductService: CategoryProductService, private servicioMensaje: MensajeService) {
     
   }
   public isLogged: boolean = false;// switch para ususario logeado y no legeados, true = logeado
@@ -22,6 +23,10 @@ export class NavbarComponent implements OnInit {
     this.categoriasObservable.subscribe(categoryProducts => {
       this.categorias = categoryProducts;
     });
+  }
+  
+  mensajeEnviado(mensaje: string) {
+    this.servicioMensaje.moficicarMensaje(mensaje);
   }
 
 }
