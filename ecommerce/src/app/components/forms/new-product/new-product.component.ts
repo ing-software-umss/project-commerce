@@ -24,6 +24,9 @@ export class NewProductComponent implements OnInit {
   urlImage: Observable<string>;
   uploadPercent: Observable<number>;
 
+  public isAlertE: boolean = false;
+  public isAlertC: boolean = false;
+
   constructor( private productService: ProductService, private categoryProductService: CategoryProductService, private storage: AngularFireStorage ) { }
 
   ngOnInit() {
@@ -78,11 +81,20 @@ export class NewProductComponent implements OnInit {
         imagen: image,
         descripcion,
       });
-    } else {
-      alert('Error de validacion, campos incorrectos');
-    }
 
+      this.isAlertC = true;
+      this.isAlertE = false;
+    } else {
+      this.isAlertC = false;
+      this.isAlertE = true;
+      alert('Datos incorretos');
+      this.isAlertC = false;
+      this.isAlertE = false;
+    }
     form.reset();
   }
-
+  restart($event) {
+    this.isAlertE = false; 
+    this.isAlertC = false;
+  }
 }
