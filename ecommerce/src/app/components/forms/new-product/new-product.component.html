@@ -15,22 +15,22 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Nombre</th>
-            <th>Imagen</th>
+            <th>Marca</th>
             <th>Precio</th>
-            <th>Descripción</th>
+            <th>Cat. Prodcuto</th>
             <th>Editar</th>
             <th>Eliminar</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let product of products" >
           <tr ng-repeat="user in users">
             <td>1</td>
-            <td>Samsung</td>
-            <td>/imagenes/producto.img</td>
-            <td>$4500</td>
-            <td>Telefono movil</td>
+            <td>{{product.nombre}}</td>
+            <td>{{product.marca}}</td>
+            <td>{{product.precio}}</td>
+            <td>{{product.idCatProducto}}</td>
             <td>
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editBtn">Editar</button>
             </td>
@@ -54,23 +54,47 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form > 
           <div class="form-group row">
             <label for="NombreCategoria" class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Producto">
             </div>
           </div>
+
           <div class="form-group row">
-            <label for="ImagenCategoria" class="col-sm-2 col-form-label">Imagen</label>
+            <label for="MarcaProducto" class="col-sm-2 col-form-label">marca</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputImagen" placeholder="Imagen Producto">
+              <input type="text" class="form-control" id="inputMarca" placeholder="Marca Producto">
             </div>
           </div>
           <div class="form-group row">
-            <label for="PrecioCategoria" class="col-sm-2 col-form-label">Precio</label>
+            <label for="PrecioProducto" class="col-sm-2 col-form-label">Precio</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="inputPrecio" placeholder="Precio Producto">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CatProducto" class="col-sm-2 col-form-label">cat producto</label>
+            <div class="col-sm-10">
+              <select name="catProdcuto" id="inputCatProduct" class="form-control">  
+                <option value="0">...</option>
+                <option value="1">Uno</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="ImagenCategoria" class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control" accept=".png, .jpg"  id="inputImagen" value="upload" (change)="cambioArchivo($event)">
+              <input #imageUser id="imageProduct" type="hidden" [value]="urlImage | async">
+            </div>
+            <br>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadPercent | async) +'%'">
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -82,8 +106,11 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info" data-dismiss="modal">Guardar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button *ngIf="urlImage | async; else btnDisable" (click)="addProduct($event)" type="submit" class="btn btn-info" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+        <ng-template #btnDisable>
+          <button type="button" disabled="true" (click)="addProduct($event)" class="btn btn-secondary" data-dismiss="modal">Guardar</button>
+        </ng-template>
       </div>
     </div>
   </div>

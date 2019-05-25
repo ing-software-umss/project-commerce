@@ -10,6 +10,8 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './../environments/environment';
 import { CategoryProductService } from './components/forms/category-product/category-product.service';
+import { ProductService } from './components/forms/new-product/new-product.service';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { CategoryProductService } from './components/forms/category-product/cate
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
-    CategoryProductService
+    CategoryProductService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
