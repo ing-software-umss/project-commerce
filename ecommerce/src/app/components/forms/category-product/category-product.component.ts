@@ -26,12 +26,12 @@ export class CategoryProductComponent implements OnInit {
     this.categoryProducts$ = this.categoryProductService.getCatProducts();
     this.categoryProducts$.subscribe(categoryProducts => {
       this.categoryProducts = categoryProducts;
-      // console.log(this.categoryProducts);
+      console.log(this.categoryProducts);
     });
   }
 
   addCategoryProduct($event) {
-    // $event.preventDefault();
+    $event.preventDefault();
     
     let form: any = $event.target.parentNode;
     let name = form.querySelector('#inputNombre').value ;
@@ -48,11 +48,13 @@ export class CategoryProductComponent implements OnInit {
       });
       this.isAlertE = false;
       this.isAlertC = true;
+     form.reset();
     } else {
       this.isAlertE = true; 
       this.isAlertC = false;
+     
     }
-    form.reset();    
+    
   }
   restart($event) {
     this.isAlertE = false; 
