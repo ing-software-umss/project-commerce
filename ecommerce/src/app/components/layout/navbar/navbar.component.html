@@ -13,10 +13,20 @@
 			
 			
 				<li class="nav-item ">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Producto<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					  Categorías
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<div *ngFor="let categoria of categorias">
+							<a class="dropdown-item" routerLink="productos/categoria">{{categoria.nombre}}</a>
+						</div>
+					</div>
 				</li>
 				<li class="nav-item" *ngIf="!isLoggedAdm">
 					<a class="nav-link" href="#">Blog</a>
