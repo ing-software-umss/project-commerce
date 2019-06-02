@@ -24,10 +24,10 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<div *ngFor="let categoria of categorias">
-							<a class="dropdown-item" routerLink="productos/categoria">{{categoria.nombre}}</a>
+							<a class="dropdown-item" routerLink="productos/categoria" (click)="onCambiar(categoria.nombre)">{{categoria.nombre}}</a>
 						</div>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" routerLink="productos/categoria">Todos los productos</a>
+						<a class="dropdown-item" routerLink="productos/categoria" (click)="onCambiar('Todos los productos')">Todos los productos</a>
 					</div>
 				</li>
 				<li class="nav-item" *ngIf="!isLoggedAdm">

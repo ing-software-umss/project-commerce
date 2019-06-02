@@ -1,14 +1,16 @@
 <div class="container mt-4">
     <div class="card-columns">
         <div *ngFor="let producto of products">
-            <div class="card border-dark">
-                <div class="img-animtion">
-                    <img src="{{producto.imagen}}" alt="" class="card-img-top">
-                </div>
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{producto.nombre}}</h5>
-                    <p class="card-text">${{producto.precio}}</p>
-                    <a href="#" class="btn btn-success">Comprar</a>
+            <div *ngIf="mensja() == 'Todos los productos' || mensja() == producto.idCatProducto">
+                <div class="card border-dark">
+                    <div class="img-animtion">
+                        <img src="{{producto.imagen}}" alt="" class="card-img-top">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{producto.nombre}}</h5>
+                        <p class="card-text">${{producto.precio}}</p>
+                        <a href="#" class="btn btn-success">Comprar</a>
+                    </div>
                 </div>
             </div>
         </div>

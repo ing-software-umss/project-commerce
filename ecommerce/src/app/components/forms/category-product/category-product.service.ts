@@ -7,6 +7,7 @@ import { CategoryProduct } from '../../../shared/models/category-product';
   providedIn: 'root'
 })
 export class CategoryProductService {
+  nombreCategoria: string;
 
   constructor( private db: AngularFirestore) {}
 
@@ -17,5 +18,7 @@ export class CategoryProductService {
   addCatProduct( catProduct: any ): any {
     return this.db.collection<CategoryProduct>('cat-productos').add(catProduct);
   }
-  
+  cambiar(mensaje: string){
+    this.nombreCategoria = mensaje;
+  }
 }
