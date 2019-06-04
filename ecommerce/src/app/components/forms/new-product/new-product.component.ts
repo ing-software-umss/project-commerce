@@ -97,4 +97,7 @@ export class NewProductComponent implements OnInit {
     this.isAlertE = false; 
     this.isAlertC = false;
   }
+  eliminar(dato){
+    this.productService.deleteItem(dato);
+  }
 }
