@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
@@ -12,20 +12,22 @@ import { environment } from './../environments/environment';
 import { CategoryProductService } from './components/forms/category-product/category-product.service';
 import { ProductService } from './components/forms/new-product/new-product.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-
+  import { from } from 'rxjs';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FooterComponent,
     NavbarComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule 
   ],
   providers: [
     CategoryProductService,

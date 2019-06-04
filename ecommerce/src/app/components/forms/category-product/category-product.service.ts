@@ -17,5 +17,14 @@ export class CategoryProductService {
   addCatProduct( catProduct: any ): any {
     return this.db.collection<CategoryProduct>('cat-productos').add(catProduct);
   }
+
+  updateCatProduc(name: any): any {
+   // console.log('deleteItem', name);
+    return this.db.collection<CategoryProduct>('cat-productos').doc(name).update({
+      nombre: 'Cambio Realizando'
+    });
+    console.log( name.nombre);
+  // return console.log('deleteItem', this.db.collection<CategoryProduct>('cat-productos').doc('name'));
+  }
   
 }
