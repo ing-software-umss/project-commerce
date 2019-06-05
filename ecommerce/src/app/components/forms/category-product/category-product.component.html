@@ -124,7 +124,25 @@
 
               </div>
             </div>
-            <button type="submit" class="btn btn-info" data-dismiss="modal" (click)="updateCategoryProduct($event)">Actualizar</button>
+            <button  class="btn btn-info"  (click)="updateCategoryProduct($event)" >Actualizar</button>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                </div>
+              </div>
+          <div class="form-group row" *ngIf="isAlertE">
+            <div class="col-sm-12">
+                <div class="alert alert-warning" role="alert" >
+                    Error de validacion, campos incorrectos!
+                  </div>
+            </div>
+          </div>
+          <div class="form-group row" *ngIf="isAlertC">
+              <div class="col-sm-12">
+                  <div class="alert alert-success" role="alert">
+                      Se añadio la categoria Exitosamente
+                    </div>
+                </div>
+              </div>
           </form>
         </div>
         <div class="modal-footer">

@@ -5,7 +5,7 @@ import {CategoryProductService} from './category-product.service';
 import { FormsModule } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal'; 
 import { modalConfigDefaults } from 'ngx-bootstrap/modal/modal-options.class';
-//declare var $:any;
+declare var $:any;
 
 @Component({
   selector: 'app-category-product',
@@ -13,6 +13,7 @@ import { modalConfigDefaults } from 'ngx-bootstrap/modal/modal-options.class';
   styleUrls: ['./category-product.component.css']
 })
 export class CategoryProductComponent implements OnInit {
+  private form: any
   item: any = {
     nombre:'',
     descripcion:'',
@@ -36,10 +37,10 @@ export class CategoryProductComponent implements OnInit {
 
   addCategoryProduct($event) {
     $event.preventDefault();
+    this.form = $event.target.parentNode;
     
-    let form: any = $event.target.parentNode;
-    let name = form.querySelector('#inputNombre').value ;
-    let descripcion = form.querySelector('#inputDescripcion').value;
+    let name = this.form.querySelector('#inputNombre').value ;
+    let descripcion = this.form.querySelector('#inputDescripcion').value;
 
     let expreName = /^\w+(\s\w+)*$/;
     let expreDescripcion = /^\w+(\s\w+)*$/;
@@ -52,7 +53,7 @@ export class CategoryProductComponent implements OnInit {
       });
       this.isAlertE = false;
       this.isAlertC = true;
-     form.reset();
+     this.form.reset();
     } else {
       this.isAlertE = true; 
       this.isAlertC = false;
@@ -63,29 +64,29 @@ export class CategoryProductComponent implements OnInit {
   this.item = NomCat;
    console.log( this.item.descripcion);
   }
+  
   updateCategoryProduct($event){
-    let form: any = $event.target.parentNode;
-    let name = form.querySelector('#inputNombre').value ;
-    let descripcion = form.querySelector('#inputDescripcion').value;
-
+    $event.preventDefault();
+    this.form = $event.target.parentNode;
+    let name = this.form.querySelector('#inputNombre').value ;
+    let descripcion = this.form.querySelector('#inputDescripcion').value;
     let expreName = /^\w+(\s\w+)*$/;
     let expreDescripcion = /^\w+(\s\w+)*$/;
     
-    if ( expreName.test(name) && expreDescripcion.test(descripcion) ) {      
+    if ( expreName.test(name) && expreDescripcion.test(descripcion) ) { 
+      
         this.item.nombre = name;      
         this.item.descripcion = descripcion;
-        console.log( this.item.nombre);
         this.isAlertE = false;
         this.isAlertC = true;
         this.categoryProductService.updateCatProduc(this.item);
-       form.reset();
     } else {
       this.isAlertE = true; 
       this.isAlertC = false;
-    
   }
 }
   preDeletCatProduc(CatProduct){
+  
   this.item = CatProduct;
   }
   deletCatProducto(){
@@ -95,6 +96,7 @@ export class CategoryProductComponent implements OnInit {
   restart($event) {
     this.isAlertE = false; 
     this.isAlertC = false;
+  //  this.form.resetForm();
   }
 
 }

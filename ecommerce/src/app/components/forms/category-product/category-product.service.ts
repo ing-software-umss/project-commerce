@@ -8,7 +8,7 @@ import { map } from 'rxjs/internal/operators/map';
   providedIn: 'root'
 })
 export class CategoryProductService {
-  //nombreCategoria: string;
+  nombreCategoria: string;
   private itemDoc: AngularFirestoreDocument<CategoryProduct>;
   constructor( private db: AngularFirestore) {}
 
@@ -27,16 +27,14 @@ export class CategoryProductService {
   }
   deleteItem(dato) {
     console.log('deleteItem', dato.id);
-    this.itemDoc = this.db.doc<CategoryProduct>(`producto/${dato.id}`);
+    this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
     this.itemDoc.delete();
   }
 
-  updateCatProduc(name: any): any {
-   // console.log('deleteItem', name);
-    return this.db.collection<CategoryProduct>('cat-productos').doc(name).update({
-      nombre: 'Cambio Realizando'
-    });
-    console.log( name.nombre);
+  updateCatProduc(dato){
+    this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
+    this.itemDoc.update(dato);
+    
   // return console.log('deleteItem', this.db.collection<CategoryProduct>('cat-productos').doc('name'));
   }
   
