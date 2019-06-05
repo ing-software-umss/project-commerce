@@ -35,7 +35,7 @@
                 (click)="preUpdateCategoryProduct(categoryProduct)" >Editar</button>
               </td>
               <td>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn">Eliminar</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn" (click)="preDeletCatProduc(categoryProduct)">Eliminar</button>
               </td>
             </tr>
           </tbody>
@@ -148,7 +148,7 @@
           <p class="text-danger">¿Esta seguro que desea eliminar la Categoria?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">Si</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="deletCatProducto()">Si</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
         </div>
       </div>

@@ -85,6 +85,12 @@ export class CategoryProductComponent implements OnInit {
     
   }
 }
+  preDeletCatProduc(CatProduct){
+  this.item = CatProduct;
+  }
+  deletCatProducto(){
+    this.categoryProductService.deleteItem(this.item);
+  }
 
   restart($event) {
     this.isAlertE = false; 

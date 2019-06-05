@@ -1,22 +1,34 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CategoryProduct } from '../../../shared/models/category-product';
+import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryProductService {
-  nombreCategoria: string;
-
+  //nombreCategoria: string;
+  private itemDoc: AngularFirestoreDocument<CategoryProduct>;
   constructor( private db: AngularFirestore) {}
 
   getCatProducts(): Observable<CategoryProduct[]> {
-    return this.db.collection<CategoryProduct>('cat-productos').valueChanges();
+    return this.db.collection<CategoryProduct>('cat-productos').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as CategoryProduct;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
   addCatProduct( catProduct: any ): any {
     return this.db.collection<CategoryProduct>('cat-productos').add(catProduct);
+  }
+  deleteItem(dato) {
+    console.log('deleteItem', dato.id);
+    this.itemDoc = this.db.doc<CategoryProduct>(`producto/${dato.id}`);
+    this.itemDoc.delete();
   }
 
   updateCatProduc(name: any): any {
