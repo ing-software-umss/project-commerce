@@ -20,8 +20,8 @@ export class CategoriasComponent implements OnInit {
       console.log(this.products);
     });
   }
-  mensja(): string {
-    return this.categoriaService.nombreCategoria;
-  }
+  //mensja(): string {
+    //return this.categoriaService.nombreCategoria();
+  //}
 
 }

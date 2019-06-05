@@ -61,7 +61,7 @@ export class CategoryProductComponent implements OnInit {
   preUpdateCategoryProduct(NomCat: any){
   //this.item = this.categoryProductService.updateCatProduc(NomCat);
   this.item = NomCat;
-   console.log( this.item.descripcion);
+   //console.log( this.item.descripcion);
   }
   updateCategoryProduct($event){
     let form: any = $event.target.parentNode;
@@ -74,7 +74,7 @@ export class CategoryProductComponent implements OnInit {
     if ( expreName.test(name) && expreDescripcion.test(descripcion) ) {      
         this.item.nombre = name;      
         this.item.descripcion = descripcion;
-        console.log( this.item.nombre);
+      //  console.log( this.item.nombre);
         this.isAlertE = false;
         this.isAlertC = true;
         this.categoryProductService.updateCatProduc(this.item);

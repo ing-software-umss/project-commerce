@@ -27,16 +27,15 @@ export class CategoryProductService {
   }
   deleteItem(dato) {
     console.log('deleteItem', dato.id);
-    this.itemDoc = this.db.doc<CategoryProduct>(`producto/${dato.id}`);
+    this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
     this.itemDoc.delete();
   }
 
-  updateCatProduc(name: any): any {
+  updateCatProduc(dato) {
    // console.log('deleteItem', name);
-    return this.db.collection<CategoryProduct>('cat-productos').doc(name).update({
-      nombre: 'Cambio Realizando'
-    });
-    console.log( name.nombre);
+   this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
+   this.itemDoc.update(dato);
+    //console.log( name.nombre);
   // return console.log('deleteItem', this.db.collection<CategoryProduct>('cat-productos').doc('name'));
   }
   
