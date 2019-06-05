@@ -7,6 +7,7 @@ import { CategoryProduct } from '../../../shared/models/category-product';
   providedIn: 'root'
 })
 export class CategoryProductService {
+  nombreCategoria: string;
 
   constructor( private db: AngularFirestore) {}
 

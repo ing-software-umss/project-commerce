@@ -23,5 +23,8 @@ export class NavbarComponent implements OnInit {
       this.categorias = categoryProducts;
     });
   }
+  onCambiar(mesaje: string){
+    this.categoryProductService.cambiar(mesaje);
+  }
 
 }
