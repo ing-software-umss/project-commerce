@@ -64,6 +64,7 @@ export class CategoryProductComponent implements OnInit {
    //console.log( this.item.descripcion);
   }
   updateCategoryProduct($event){
+    $event.preventDefault();
     let form: any = $event.target.parentNode;
     let name = form.querySelector('#inputNombre').value ;
     let descripcion = form.querySelector('#inputDescripcion').value;
@@ -74,7 +75,6 @@ export class CategoryProductComponent implements OnInit {
     if ( expreName.test(name) && expreDescripcion.test(descripcion) ) {      
         this.item.nombre = name;      
         this.item.descripcion = descripcion;
-      //  console.log( this.item.nombre);
         this.isAlertE = false;
         this.isAlertC = true;
         this.categoryProductService.updateCatProduc(this.item);
