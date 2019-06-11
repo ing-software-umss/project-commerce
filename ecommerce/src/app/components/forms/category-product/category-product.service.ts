@@ -26,13 +26,13 @@ export class CategoryProductService {
 
 
   addCatProduct( catProduct: any ): any {
+    console.log(catProduct);
     return this.db.collection<CategoryProduct>('cat-productos').add(catProduct);
   }
   deleteItem(dato) {
     this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
     this.itemDoc.delete();
   }
-
 
   updateCatProduc(dato){
     this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
