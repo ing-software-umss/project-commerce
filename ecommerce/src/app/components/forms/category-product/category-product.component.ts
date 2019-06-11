@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryProduct } from '../../../shared/models/category-product';
 import {CategoryProductService} from './category-product.service';
-import { ModalDirective } from 'ngx-bootstrap/modal'; 
-import { modalConfigDefaults } from 'ngx-bootstrap/modal/modal-options.class';
 //declare var $:any;
 
 @Component({
