@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   addCatProduct(product: any): any {
-
+    console.log(product);
     return this.db.collection<Product>('producto').add(product);
   }
   deleteItem(dato) {
