@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { CategoryProductService } from './category-product.service';
 
 describe('CategoryProductService', () => {
