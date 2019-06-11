@@ -37,5 +37,8 @@ export class CategoryProductService {
     
   // return console.log('deleteItem', this.db.collection<CategoryProduct>('cat-productos').doc('name'));
   }
+  cambiar(mensaje: string){
+    this.nombreCategoria = mensaje;
+  }
   
 }
