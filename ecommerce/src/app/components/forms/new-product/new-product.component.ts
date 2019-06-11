@@ -17,6 +17,7 @@ export class NewProductComponent implements OnInit {
 
   products$: Observable<Product[]>;
   products: Product[];
+  eliminarEsto: Product;
 
   categoryProducts$: Observable<CategoryProduct[]>;
   categoryProducts: CategoryProduct[];
@@ -96,5 +97,11 @@ export class NewProductComponent implements OnInit {
   restart($event) {
     this.isAlertE = false; 
     this.isAlertC = false;
+  }
+  modificarEliminado(product){
+    this.eliminarEsto = product;
+  }
+  eliminar(){
+    this.productService.deleteItem(this.eliminarEsto);
   }
 }

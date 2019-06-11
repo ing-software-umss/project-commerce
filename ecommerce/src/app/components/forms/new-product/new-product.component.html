@@ -35,7 +35,7 @@
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editBtn">Editar</button>
             </td>
             <td>
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn">Eliminar</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn" (click)="modificarEliminado(product)">Eliminar</button>
             </td>
           </tr>
         </tbody>
@@ -185,7 +185,7 @@
         <p class="text-danger">¿Seguro que desea eliminar el producto?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal">Si</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" (click)="eliminar()">Si</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
       </div>
     </div>

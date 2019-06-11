@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Product } from '../../../shared/models/producto';
-import { CategoryProduct } from '../../../shared/models/category-product';
+import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor( private db: AngularFirestore) {}
+  private itemDoc: AngularFirestoreDocument<Product>;
+
+  constructor(private db: AngularFirestore) { }
 
   getCatProducts(): Observable<Product[]> {
 
@@ -17,12 +19,22 @@ export class ProductService {
     // let aux2 = aux.where('nombre', '==', 'Celulares');
     // console.log("buscado", aux2);
 
-    return this.db.collection<Product>('producto').valueChanges();
+    // return this.db.collection<Product>('producto').valueChanges();
+    return this.db.collection<Product>('producto').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Product;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
-  addCatProduct(product: any ): any {
-    
+  addCatProduct(product: any): any {
+
     return this.db.collection<Product>('producto').add(product);
   }
-  
+  deleteItem(dato) {
+    this.itemDoc = this.db.doc<Product>(`producto/${dato.id}`);
+    this.itemDoc.delete();
+  }
 }
