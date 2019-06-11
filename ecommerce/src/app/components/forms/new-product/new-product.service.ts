@@ -14,7 +14,6 @@ export class ProductService {
   constructor(private db: AngularFirestore) { }
 
   getCatProducts(): Observable<Product[]> {
-
     // let aux = this.db.collection<CategoryProduct>('cat-productos').ref;
     // let aux2 = aux.where('nombre', '==', 'Celulares');
     // console.log("buscado", aux2);
