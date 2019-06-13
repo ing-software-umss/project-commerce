@@ -7,6 +7,8 @@ import { map } from 'rxjs/internal/operators/map';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class CategoryProductService {
   nombreCategoria: string;
   private itemDoc: AngularFirestoreDocument<CategoryProduct>;
@@ -22,11 +24,12 @@ export class CategoryProductService {
     );
   }
 
+
   addCatProduct( catProduct: any ): any {
+    console.log(catProduct);
     return this.db.collection<CategoryProduct>('cat-productos').add(catProduct);
   }
   deleteItem(dato) {
-    console.log('deleteItem', dato.id);
     this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
     this.itemDoc.delete();
   }
@@ -34,11 +37,10 @@ export class CategoryProductService {
   updateCatProduc(dato){
     this.itemDoc = this.db.doc<CategoryProduct>(`cat-productos/${dato.id}`);
     this.itemDoc.update(dato);
-    
   // return console.log('deleteItem', this.db.collection<CategoryProduct>('cat-productos').doc('name'));
   }
   cambiar(mensaje: string){
     this.nombreCategoria = mensaje;
   }
-  
 }
+

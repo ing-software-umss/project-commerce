@@ -14,7 +14,6 @@ export class ProductService {
   constructor(private db: AngularFirestore) { }
 
   getCatProducts(): Observable<Product[]> {
-
     // let aux = this.db.collection<CategoryProduct>('cat-productos').ref;
     // let aux2 = aux.where('nombre', '==', 'Celulares');
     // console.log("buscado", aux2);
@@ -30,7 +29,7 @@ export class ProductService {
   }
 
   addCatProduct(product: any): any {
-
+    console.log(product);
     return this.db.collection<Product>('producto').add(product);
   }
   deleteItem(dato) {
