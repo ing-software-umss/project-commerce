@@ -31,10 +31,11 @@
               <td>{{categoryProduct.nombre}}</td>
               <td>{{categoryProduct.descripcion}}</td>
               <td>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editBtn">Editar</button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editBtn"
+                (click)="preUpdateCategoryProduct(categoryProduct)" >Editar</button>
               </td>
               <td>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn">Eliminar</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dltBtn" (click)="preDeletCatProduc(categoryProduct)">Eliminar</button>
               </td>
             </tr>
           </tbody>
@@ -113,18 +114,35 @@
             <div class="form-group row">
               <label for="NombreCategoria" class="col-sm-2 col-form-label">Nombre</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Categoria">
+                <input value={{item.nombre}} type="text" class="form-control" id="inputNombre" >
               </div>
             </div>
             <div class="form-group row">
               <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
               <div class="col-sm-12">
-                <textarea type="text" class="form-control" id="inputDescripcion"
-                  placeholder="Descripcion de la Categoria" rows="3"></textarea>
+                <textarea value={{item.descripcion}}  type="text" class="form-control" id="inputDescripcion" rows="3"></textarea>
 
               </div>
             </div>
-            <button type="submit" class="btn btn-info" data-dismiss="modal">Actualizar</button>
+            <button  class="btn btn-info"  (click)="updateCategoryProduct($event)" >Actualizar</button>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                </div>
+              </div>
+          <div class="form-group row" *ngIf="isAlertE">
+            <div class="col-sm-12">
+                <div class="alert alert-warning" role="alert" >
+                    Error de validacion, campos incorrectos!
+                  </div>
+            </div>
+          </div>
+          <div class="form-group row" *ngIf="isAlertC">
+              <div class="col-sm-12">
+                  <div class="alert alert-success" role="alert">
+                      Se añadio la categoria Exitosamente
+                    </div>
+                </div>
+              </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -148,7 +166,7 @@
           <p class="text-danger">¿Esta seguro que desea eliminar la Categoria?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">Si</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="deletCatProducto()">Si</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
         </div>
       </div>

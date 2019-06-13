@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
     });
   }
   onCambiar(mesaje: string){
-    this.categoryProductService.cambiar(mesaje);
+    //this.categoryProductService.cambiar(mesaje);
   }
 
 }

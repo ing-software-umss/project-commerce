@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryProduct } from '../../../shared/models/category-product';
 import {CategoryProductService} from './category-product.service';
+
 //declare var $:any;
 
 @Component({
